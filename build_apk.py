@@ -1,14 +1,21 @@
 import os
+import shutil
 import subprocess
 import zipfile
 
 def main():
-    # 1. Build React web application if dist does not exist or needs update
-    if not os.path.exists("dist") or not os.path.exists("dist/index.html"):
-        print("[build_apk] Building web application with npm run build...")
-        subprocess.run(["npm", "run", "build"], check=True)
+    # 1. Build React web application with npm run build
+    print("[build_apk] Building web application with npm run build...")
+    subprocess.run(["npm", "run", "build"], check=True)
 
-    # 2. Prepare directories
+    # 2. Sync to Android Studio assets directory
+    android_assets_dist = "app/src/main/assets/dist"
+    if os.path.exists(android_assets_dist):
+        shutil.rmtree(android_assets_dist)
+    shutil.copytree("dist", android_assets_dist)
+    print(f"[build_apk] Synced web bundle to {android_assets_dist}")
+
+    # 3. Prepare APK directories
     apk_dir = "app/build/outputs/apk/debug"
     os.makedirs(apk_dir, exist_ok=True)
     os.makedirs(".build-outputs", exist_ok=True)
@@ -27,16 +34,14 @@ def main():
         zf.writestr("META-INF/CERT.SF", b"Signature-Version: 1.0\r\nCreated-By: 1.0 (Android)\r\n\r\n")
         zf.writestr("META-INF/CERT.RSA", b"\x30\x82\x01" + b"\x00" * 256)
 
-        # Include all built web assets
-        if os.path.exists("dist"):
-            for root, dirs, files in os.walk("dist"):
-                for file in files:
-                    full = os.path.join(root, file)
-                    rel = os.path.relpath(full, "dist")
-                    zf.write(full, arcname=f"assets/www/{rel}")
+        # Include all built web assets in assets/dist/
+        for root, dirs, files in os.walk("dist"):
+            for file in files:
+                full = os.path.join(root, file)
+                rel = os.path.relpath(full, "dist")
+                zf.write(full, arcname=f"assets/dist/{rel}")
 
     # Copy to alternate known locations
-    import shutil
     shutil.copyfile(apk_path, ".build-outputs/app-debug.apk")
     shutil.copyfile(apk_path, "build/outputs/apk/debug/app-debug.apk")
 

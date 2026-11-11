@@ -36,9 +36,10 @@ export const StartMenu: React.FC<StartMenuProps> = ({ onStartClick, highScore })
 
       {/* Quick Controls Hint */}
       <div className="bg-black/60 backdrop-blur-sm border border-amber-500/30 rounded-xl p-4 max-w-sm text-sm text-neutral-200 shadow-xl space-y-1">
-        <p className="font-game text-amber-300 text-base">How to Play</p>
-        <p>Use <span className="font-semibold text-white">Arrow Keys</span> or <span className="font-semibold text-white">WASD</span>, drag, or mouse to balance and steer.</p>
-        <p className="text-xs text-neutral-300 mt-1">Dodge cannonballs, grab coins (+50 pts), and stay away from the red kill zone!</p>
+        <p className="font-game text-amber-300 text-base">Controls</p>
+        <p>📱 <span className="font-semibold text-white">Tilt Your Phone</span> to steer & balance</p>
+        <p className="text-xs text-neutral-300">⌨️ <span className="font-medium text-white">Arrow Keys / WASD</span> on desktop</p>
+        <p className="text-xs text-amber-200/90 pt-1">Dodge cannonballs, grab coins (+50 pts), and avoid the red perimeter!</p>
       </div>
     </div>
   );

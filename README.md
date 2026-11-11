@@ -49,6 +49,23 @@ In **Cannon Crossfire**, survival is all about balance, reflexes, and spatial aw
 
 ---
 
+## 📱 Mobile Adjustments & Android Studio Publishing
+
+### Mobile Speed & Gameplay Tuning
+- **Cannonball Speed Reduced:** Starting velocity slowed from 7.0 to 3.8 px/frame with gentle progressive acceleration, providing ample reaction time on phone touchscreens.
+- **Player Steering Tuned:** Input acceleration reduced from 6.0 to 3.2, sensitivity refined to 0.32, and friction damping increased to 0.89 with an 8.0 px/frame speed cap to prevent runaway sliding into walls.
+- **Perimeter Kill Zone:** Fairer boundary detection allows players to utilize the full display without premature collision.
+- **Touch Virtual Joystick:** Dragging anywhere on touch screens displays an intuitive responsive joystick.
+- **Physical Device Tilt:** Integrated with device orientation / accelerometer sensors with an on-screen toggle (Tilt: ON/OFF).
+
+### Publishing on Android Studio
+1. **Open in Android Studio:** Open the root directory in Android Studio.
+2. **Offline Web Assets:** The web build is automatically synchronized to `app/src/main/assets/dist/` via `python3 build_apk.py` / `npm run build`.
+3. **MainActivity:** Implements an immersive, hardware-accelerated full-screen WebView with gesture-free audio playback and touch handling.
+4. **Generate APK / AAB:** In Android Studio, go to **Build > Build Bundle(s) / APK(s) > Build APK(s)** or **Generate Signed Bundle / APK** to publish to Google Play.
+
+---
+
 ## 🚀 Development
 
 ```bash
@@ -58,6 +75,6 @@ npm install
 # Start development server on port 3000
 npm run dev
 
-# Build for production
-npm run build
+# Build web application and package Android APK
+python3 build_apk.py
 ```
