@@ -1,73 +1,63 @@
 # Cannon Crossfire 🏴‍☠️💣
 
 **Developer / Studio:** Baabearian Studios  
-**Package Name:** `com.baabearianstudios.cannoncrossfire`  
-**Platform:** Android (API Level 36+ / Min SDK 36)  
+**Platform:** Web (React + TypeScript + Vite + Tailwind CSS)  
 
 ---
 
-## 📌 Short Description
-
-**Cannon Crossfire** is an intense 2D tilt-controlled arcade survival game for Android. Steer your player across a hazardous arena using your device's accelerometer, dodging an ever-increasing barrage of cannonballs fired from perimeter cannons while collecting coins to maximize your score!
+## 📌 Description
+**Cannon Crossfire** is an intense arcade survival dodge game. Steer your character across a hazardous arena, dodging an ever-increasing crossfire barrage of cannonballs fired from perimeter cannons while collecting coins to maximize your score!
 
 ---
 
-## 🎮 Full Description & Gameplay Overview
+## 🎮 Gameplay Overview & Features
 
-In **Cannon Crossfire**, survival is all about balance, reflexes, and spatial awareness. Players take control of a character positioned within a bordered arena surrounded by wall-mounted cannons. 
-
-As time progresses, cannons fire projectiles at increasing speeds toward the center of the arena. Navigating your character requires tilting your physical device—physics-based momentum and friction simulate smooth, tilt-balancing motion. To earn higher scores, players must stay alive while collecting bonus coins that randomly spawn across the map.
+In **Cannon Crossfire**, survival is all about balance, reflexes, and spatial awareness. Players take control of a character positioned within a bordered arena surrounded by wall-mounted cannons.
 
 ### 🌟 Key Features
-
-- 📱 **Tilt-Based Physics Movement:** Uses the device's built-in accelerometer to drive character motion with smooth acceleration and drag mechanics.
+- 🕹️ **Smooth Inertia & Balancing Physics:** Character movement models smooth momentum, acceleration, and friction.
 - 💥 **Dynamic Cannon Hazards:** Cannons spawn dynamically along the outer walls (Top, Right, Bottom, Left), targeting the arena center and firing projectiles at accelerating speeds over time.
 - 🪙 **Coin Collectibles:** Bonus coins appear randomly on the field; collecting a coin instantly grants **+50 bonus score points**.
-- 🚨 **Kill Zone Arena Border:** A high-visibility red kill zone marks the arena edges. Touching the border or getting struck by a cannonball results in an instant Game Over.
-- 🏆 **Local High Score Persistence:** Automatically saves your personal best score locally using an Android **Room Database**.
-- 🎵 **Dynamic Audio & Sound Effects:** Features custom background music and sound effects (cannon fires, coin pickups, collision hits, button selections) powered by `SoundPool` and `MediaPlayer`.
-- 🎨 **Modern Jetpack Compose UI:** Built entirely using declarative Jetpack Compose UI with custom Canvas rendering, smooth state management, and animated main menu backgrounds.
+- 🚨 **Kill Zone Arena Border:** A high-visibility red kill zone marks the arena perimeter. Touching the border or getting struck by a cannonball results in an instant Game Over.
+- 🏆 **High Score & Leaderboard:** Automatically persists your personal best score and Top 5 Leaderboard locally.
+- 🎵 **Authentic Audio & Sound Effects:** Features original background music and sound effects (cannon fires, coin pickups, collision hits, button selections) with mute toggle support.
+- 🎨 **Faithful UI & Graphics:** Built with HTML5 Canvas and React, preserving all original sprite assets, menu backgrounds, and fonts.
 
 ---
 
-## 🕹️ Controls & Mechanics
+## 🕹️ Controls
 
 | Action | Control / Interaction |
 | :--- | :--- |
-| **Move Player** | Tilt your device (X / Y accelerometer tilt) |
+| **Move / Steer** | Arrow Keys, WASD, Pointer / Touch Drag, or Mouse Tilt |
 | **Collect Coins** | Navigate onto golden coin icons (+50 points) |
-| **Pause Game** | Tap the **⏸** button in the top-right corner |
-| **Menu Navigation** | Touch screen controls for Start, Restart, and Menu buttons |
+| **Pause Game** | Tap the **⏸** button in the top-right corner or press **P** / **Space** / **Esc** |
+| **Toggle Mute** | Tap the Speaker icon in the top-left corner |
+| **Menu Navigation** | Click or tap Start, Resume, Restart, and Submit buttons |
 
 ---
 
 ## 🛠️ Architecture & Tech Stack
 
-- **Language:** Kotlin
-- **UI Framework:** Jetpack Compose + Material 3
-- **Architecture Pattern:** MVVM (ViewModel + `StateFlow` + Kotlin Coroutines)
-- **Local Persistence:** Room Database (SQLite DAO + `Flow`)
-- **Sensors:** Android `SensorManager` (`Sensor.TYPE_ACCELEROMETER`)
-- **Audio Engine:** Custom `AudioManager` using `SoundPool` (SFX) and `MediaPlayer` (BGM)
-- **Build System:** Gradle (Kotlin DSL `.kts`, AGP, KSP)
+- **Framework:** React 18
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Bundler / Dev Server:** Vite
+- **Graphics:** HTML5 Canvas 2D
+- **Audio:** Web Audio / HTML5 Audio API with sound pooling
+- **Persistence:** LocalStorage API
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Development
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-repo/Cannon-Crossfire.git
-   ```
-2. **Open in Android Studio:**
-   - Open Android Studio (Ladybug / 2024.2+ recommended).
-   - Select **Open an Existing Project** and choose the project root folder.
-3. **Build & Run:**
-   - Select an Android device or Emulator (ensure accelerometer support is enabled).
-   - Click **Run 'app'** (`Shift + F10`).
+```bash
+# Install dependencies
+npm install
 
----
+# Start development server on port 3000
+npm run dev
 
-## 📜 License
-
-Copyright © 2025 Baabearian Studios. All rights reserved.
+# Build for production
+npm run build
+```
