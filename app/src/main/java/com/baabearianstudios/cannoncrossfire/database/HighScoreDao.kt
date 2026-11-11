@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.database
+package com.baabearianstudios.cannoncrossfire.database
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -1,11 +1,11 @@
-package com.example.team16_mobile_team_project_1.game
+package com.baabearianstudios.cannoncrossfire.game
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.team16_mobile_team_project_1.database.ScoreRepository
-import com.example.team16_mobile_team_project_1.network.OnlineScore
+import com.baabearianstudios.cannoncrossfire.database.ScoreRepository
+import com.baabearianstudios.cannoncrossfire.network.OnlineScore
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

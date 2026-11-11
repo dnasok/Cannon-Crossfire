@@ -1,8 +1,8 @@
-package com.example.team16_mobile_team_project_1.game
+package com.baabearianstudios.cannoncrossfire.game
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.team16_mobile_team_project_1.database.ScoreRepository
+import com.baabearianstudios.cannoncrossfire.database.ScoreRepository
 
 /**
  * Factory for creating instances of [GameManager] with a [ScoreRepository] dependency.

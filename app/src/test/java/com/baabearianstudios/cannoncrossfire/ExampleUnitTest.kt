@@ -1,7 +1,6 @@
-package com.example.team16_mobile_team_project_1
+package com.baabearianstudios.cannoncrossfire
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**

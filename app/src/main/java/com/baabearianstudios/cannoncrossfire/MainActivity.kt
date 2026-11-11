@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1
+package com.baabearianstudios.cannoncrossfire
 
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -13,15 +13,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.team16_mobile_team_project_1.database.AppDatabase
-import com.example.team16_mobile_team_project_1.database.ScoreRepository
-import com.example.team16_mobile_team_project_1.game.AudioManager
-import com.example.team16_mobile_team_project_1.game.GameManager
-import com.example.team16_mobile_team_project_1.game.GameManagerFactory
-import com.example.team16_mobile_team_project_1.game.GameScreen
-import com.example.team16_mobile_team_project_1.game.GameState
-import com.example.team16_mobile_team_project_1.network.RetrofitInstance
-import com.example.team16_mobile_team_project_1.ui.theme.Team16_Mobile_Team_Project_1Theme
+import com.baabearianstudios.cannoncrossfire.database.AppDatabase
+import com.baabearianstudios.cannoncrossfire.database.ScoreRepository
+import com.baabearianstudios.cannoncrossfire.game.AudioManager
+import com.baabearianstudios.cannoncrossfire.game.GameManager
+import com.baabearianstudios.cannoncrossfire.game.GameManagerFactory
+import com.baabearianstudios.cannoncrossfire.game.GameScreen
+import com.baabearianstudios.cannoncrossfire.game.GameState
+import com.baabearianstudios.cannoncrossfire.network.RetrofitInstance
+import com.baabearianstudios.cannoncrossfire.ui.theme.Team16_Mobile_Team_Project_1Theme
 
 /**
  * The main activity of the application, which hosts the game.

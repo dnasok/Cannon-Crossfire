@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.ui.theme
+package com.baabearianstudios.cannoncrossfire.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.ui.theme
+package com.baabearianstudios.cannoncrossfire.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
@@ -6,7 +6,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.team16_mobile_team_project_1.R
+import com.baabearianstudios.cannoncrossfire.R
 
 val LuckiestGuy = FontFamily(
     Font(R.font.luckiest_guy_regular)

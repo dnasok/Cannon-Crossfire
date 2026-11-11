@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.game
+package com.baabearianstudios.cannoncrossfire.game
 
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Canvas
@@ -38,8 +38,8 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.team16_mobile_team_project_1.R
-import com.example.team16_mobile_team_project_1.network.OnlineScore
+import com.baabearianstudios.cannoncrossfire.R
+import com.baabearianstudios.cannoncrossfire.network.OnlineScore
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
@@ -86,16 +86,16 @@ fun GameScreen(
     }
 
     val playerImage = remember {
-        BitmapFactory.decodeResource(context.resources, R.drawable.player).asImageBitmap()
+        BitmapFactory.decodeResource(context.resources, R.drawable.player)?.asImageBitmap()
     }
     val enemyImage = remember {
-        BitmapFactory.decodeResource(context.resources, R.drawable.enemy).asImageBitmap()
+        BitmapFactory.decodeResource(context.resources, R.drawable.enemy)?.asImageBitmap()
     }
     val cannonballImage = remember {
-        BitmapFactory.decodeResource(context.resources, R.drawable.cannonball).asImageBitmap()
+        BitmapFactory.decodeResource(context.resources, R.drawable.cannonball)?.asImageBitmap()
     }
     val coinImage = remember {
-        BitmapFactory.decodeResource(context.resources, R.drawable.coin).asImageBitmap()
+        BitmapFactory.decodeResource(context.resources, R.drawable.coin)?.asImageBitmap()
     }
 
     Box(
@@ -336,10 +336,10 @@ fun GameCanvas(
     cannons: List<Cannon>,
     cannonballs: List<Cannonball>,
     coin: Coin?,
-    playerImage: ImageBitmap,
-    enemyImage: ImageBitmap,
-    cannonballImage: ImageBitmap,
-    coinImage: ImageBitmap
+    playerImage: ImageBitmap?,
+    enemyImage: ImageBitmap?,
+    cannonballImage: ImageBitmap?,
+    coinImage: ImageBitmap?
 ) {
     Canvas(modifier = Modifier.fillMaxSize()) {
         // Draw Kill Zone border
@@ -349,60 +349,65 @@ fun GameCanvas(
         )
 
         // Draw Player
-        drawImage(
-            image = playerImage,
-            dstOffset = IntOffset(
-                (player.x - player.radius).toInt(),
-                (player.y - player.radius).toInt()
-            ),
-            dstSize = IntSize(
-                (player.radius * 2).toInt(),
-                (player.radius * 2).toInt()
-            )
-        )
-
-        // Draw Cannons
-        cannons.forEach { cannon ->
+        playerImage?.let { img ->
             drawImage(
-                image = enemyImage,
+                image = img,
                 dstOffset = IntOffset(
-                    (cannon.x - cannon.radius).toInt(),
-                    (cannon.y - cannon.radius).toInt()
+                    (player.x - player.radius).toInt(),
+                    (player.y - player.radius).toInt()
                 ),
                 dstSize = IntSize(
-                    (
-                            cannon.radius * 2).toInt(),
-                    (cannon.radius * 2).toInt()
+                    (player.radius * 2).toInt(),
+                    (player.radius * 2).toInt()
                 )
             )
+        }
+
+        // Draw Cannons
+        enemyImage?.let { img ->
+            cannons.forEach { cannon ->
+                drawImage(
+                    image = img,
+                    dstOffset = IntOffset(
+                        (cannon.x - cannon.radius).toInt(),
+                        (cannon.y - cannon.radius).toInt()
+                    ),
+                    dstSize = IntSize(
+                        (cannon.radius * 2).toInt(),
+                        (cannon.radius * 2).toInt()
+                    )
+                )
+            }
         }
 
         // Draw Cannonballs
-        cannonballs.forEach { cannonball ->
-            drawImage(
-                image = cannonballImage,
-                dstOffset = IntOffset(
-                    (cannonball.x - cannonball.radius).toInt(),
-                    (cannonball.y - cannonball.radius).toInt()
-                ),
-                dstSize = IntSize(
-                    (cannonball.radius * 2).toInt(),
-                    (cannonball.radius * 2).toInt()
+        cannonballImage?.let { img ->
+            cannonballs.forEach { cannonball ->
+                drawImage(
+                    image = img,
+                    dstOffset = IntOffset(
+                        (cannonball.x - cannonball.radius).toInt(),
+                        (cannonball.y - cannonball.radius).toInt()
+                    ),
+                    dstSize = IntSize(
+                        (cannonball.radius * 2).toInt(),
+                        (cannonball.radius * 2).toInt()
+                    )
                 )
-            )
+            }
         }
 
         // Draw Coin
-        coin?.let {
+        if (coin != null && coinImage != null) {
             drawImage(
                 image = coinImage,
                 dstOffset = IntOffset(
-                    (it.x - it.radius).toInt(),
-                    (it.y - it.radius).toInt()
+                    (coin.x - coin.radius).toInt(),
+                    (coin.y - coin.radius).toInt()
                 ),
                 dstSize = IntSize(
-                    (it.radius * 2).toInt(),
-                    (it.radius * 2).toInt()
+                    (coin.radius * 2).toInt(),
+                    (coin.radius * 2).toInt()
                 )
             )
         }
@@ -466,8 +471,6 @@ fun GameOverMenu(
 ) {
 
     var playerName by remember { mutableStateOf("Player") }
-//    val isNewHighScore = score > highScore
-
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -711,7 +714,7 @@ private data class MenuBall(
 @Composable
 fun MenuCannonballBackground(
     modifier: Modifier = Modifier,
-    cannonballImage: ImageBitmap
+    cannonballImage: ImageBitmap?
 ) {
     var size by remember { mutableStateOf(IntSize.Zero) }
 
@@ -756,18 +759,20 @@ fun MenuCannonballBackground(
     Canvas(
         modifier = modifier.onSizeChanged { size = it }
     ) {
-        balls.forEach { b ->
-            drawImage(
-                image = cannonballImage,
-                dstOffset = IntOffset(
-                    (b.x - b.r).toInt(),
-                    (b.y - b.r).toInt()
-                ),
-                dstSize = IntSize(
-                    (b.r * 2).toInt(),
-                    (b.r * 2).toInt()
+        cannonballImage?.let { img ->
+            balls.forEach { b ->
+                drawImage(
+                    image = img,
+                    dstOffset = IntOffset(
+                        (b.x - b.r).toInt(),
+                        (b.y - b.r).toInt()
+                    ),
+                    dstSize = IntSize(
+                        (b.r * 2).toInt(),
+                        (b.r * 2).toInt()
+                    )
                 )
-            )
+            }
         }
     }
 }

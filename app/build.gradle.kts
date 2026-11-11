@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.team16_mobile_team_project_1"
+    namespace = "com.baabearianstudios.cannoncrossfire"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.team16_mobile_team_project_1"
+        applicationId = "com.baabearianstudios.cannoncrossfire"
         minSdk = 36
         targetSdk = 36
         versionCode = 1

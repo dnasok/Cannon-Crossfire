@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.network
+package com.baabearianstudios.cannoncrossfire.network
 
 import retrofit2.Response
 import retrofit2.http.Body

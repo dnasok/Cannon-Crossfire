@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.game
+package com.baabearianstudios.cannoncrossfire.game
 
 /**
  * Represents the player character in the game.

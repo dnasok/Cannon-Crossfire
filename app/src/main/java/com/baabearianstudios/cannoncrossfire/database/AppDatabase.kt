@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.database
+package com.baabearianstudios.cannoncrossfire.database
 
 import android.content.Context
 import androidx.room.Database
@@ -32,8 +32,10 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "high_score_database"
-                ).build()
+                    "high_score_database",
+                )
+                    .fallbackToDestructiveMigration(dropAllTables = true)
+                    .build()
                 INSTANCE = instance
                 instance
             }

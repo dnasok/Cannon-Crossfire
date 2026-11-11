@@ -1,4 +1,4 @@
-package com.example.team16_mobile_team_project_1.network
+package com.baabearianstudios.cannoncrossfire.network
 
 /**
  * Represents a player's score on the online leaderboard.

@@ -1,10 +1,10 @@
-package com.example.team16_mobile_team_project_1.game
+package com.baabearianstudios.cannoncrossfire.game
 
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.media.SoundPool
-import com.example.team16_mobile_team_project_1.R
+import com.baabearianstudios.cannoncrossfire.R
 
 /**
  * Manages all audio playback for the game, including sound effects and background music.
@@ -69,9 +69,13 @@ object AudioManager {
     fun playMenuMusic(context: Context) {
         if (isMusicPausedByLifecycle) return
         stopMusic()
-        mediaPlayer = MediaPlayer.create(context, R.raw.bgm_menu).apply {
-            isLooping = true
-            start()
+        try {
+            mediaPlayer = MediaPlayer.create(context, R.raw.bgm_menu)?.apply {
+                isLooping = true
+                start()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -83,9 +87,13 @@ object AudioManager {
     fun playGameMusic(context: Context) {
         if (isMusicPausedByLifecycle) return
         stopMusic()
-        mediaPlayer = MediaPlayer.create(context, R.raw.bgm_game).apply {
-            isLooping = true
-            start()
+        try {
+            mediaPlayer = MediaPlayer.create(context, R.raw.bgm_game)?.apply {
+                isLooping = true
+                start()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -93,9 +101,14 @@ object AudioManager {
      * Stops the currently playing background music.
      */
     fun stopMusic() {
-        mediaPlayer?.stop()
-        mediaPlayer?.release()
-        mediaPlayer = null
+        try {
+            mediaPlayer?.stop()
+            mediaPlayer?.release()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            mediaPlayer = null
+        }
     }
 
     /**
