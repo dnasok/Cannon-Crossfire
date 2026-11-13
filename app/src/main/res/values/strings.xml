@@ -19,7 +19,7 @@
     <string name="top_5_players">Top 5 Players</string>
     <string name="controls_title">Controls</string>
     <string name="controls_tilt">Hold your phone flat and tilt to steer &amp; balance</string>
-    <string name="controls_objective">Dodge cannonballs, grab coins (+50 pts), and avoid the red perimeter!</string>
+    <string name="controls_objective">Dodge cannonballs, grab coins (+50 pts), and avoid the hazard zone!</string>
     <string name="hold_flat_title">Hold Phone Flat</string>
     <string name="hold_flat_message">Tilt your phone flat (screen facing up) to begin gameplay.</string>
     <string name="hold_flat_cancel">Cancel</string>
