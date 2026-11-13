@@ -1,8 +1,4 @@
-tasks.register<Exec>("assembleDebug") {
-    commandLine("python3", "build_apk.py")
-}
-tasks.register("lint") {
-    doLast {
-        println("Web applet lint completed")
-    }
+plugins {
+    id("com.android.application") version "9.1.1" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.2.10" apply false
 }

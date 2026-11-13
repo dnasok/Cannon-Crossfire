@@ -16,7 +16,7 @@ class GameSoundManager(private val context: Context) {
     private var bgmGamePlayer: MediaPlayer? = null
     private var currentTrack: String? = null
     private var isMuted: Boolean = false
-    private var volume: Float = 0.7f
+    private val volume: Float = 0.7f
 
     init {
         initSoundPool()
@@ -41,21 +41,10 @@ class GameSoundManager(private val context: Context) {
         }
     }
 
-    fun playCoin() {
-        playSound(sfxCoinId)
-    }
-
-    fun playHit() {
-        playSound(sfxHitId)
-    }
-
-    fun playSelect() {
-        playSound(sfxSelectId)
-    }
-
-    fun playShoot() {
-        playSound(sfxShootId)
-    }
+    fun playCoin() = playSound(sfxCoinId)
+    fun playHit() = playSound(sfxHitId)
+    fun playSelect() = playSound(sfxSelectId)
+    fun playShoot() = playSound(sfxShootId)
 
     private fun playSound(soundId: Int) {
         if (isMuted || soundId == 0) return
@@ -77,7 +66,8 @@ class GameSoundManager(private val context: Context) {
             }
             bgmMenuPlayer?.seekTo(0)
             bgmMenuPlayer?.start()
-        } catch (_: Exception) {}
+        } catch (_: Exception) {
+        }
     }
 
     fun playGameMusic() {
@@ -95,7 +85,8 @@ class GameSoundManager(private val context: Context) {
             }
             bgmGamePlayer?.seekTo(0)
             bgmGamePlayer?.start()
-        } catch (_: Exception) {}
+        } catch (_: Exception) {
+        }
     }
 
     fun stopMenuMusic() {
@@ -103,7 +94,8 @@ class GameSoundManager(private val context: Context) {
             if (bgmMenuPlayer?.isPlaying == true) {
                 bgmMenuPlayer?.pause()
             }
-        } catch (_: Exception) {}
+        } catch (_: Exception) {
+        }
     }
 
     fun stopGameMusic() {
@@ -111,7 +103,21 @@ class GameSoundManager(private val context: Context) {
             if (bgmGamePlayer?.isPlaying == true) {
                 bgmGamePlayer?.pause()
             }
-        } catch (_: Exception) {}
+        } catch (_: Exception) {
+        }
+    }
+
+    fun onAppPaused() {
+        stopMenuMusic()
+        stopGameMusic()
+    }
+
+    fun onAppResumed() {
+        if (isMuted) return
+        when (currentTrack) {
+            "menu" -> playMenuMusic()
+            "game" -> playGameMusic()
+        }
     }
 
     fun toggleMute(): Boolean {
@@ -120,8 +126,7 @@ class GameSoundManager(private val context: Context) {
             stopMenuMusic()
             stopGameMusic()
         } else {
-            if (currentTrack == "menu") playMenuMusic()
-            else if (currentTrack == "game") playGameMusic()
+            onAppResumed()
         }
         return isMuted
     }
@@ -140,6 +145,7 @@ class GameSoundManager(private val context: Context) {
 
             soundPool?.release()
             soundPool = null
-        } catch (_: Exception) {}
+        } catch (_: Exception) {
+        }
     }
 }

@@ -9,9 +9,21 @@
     <string name="paused">Paused</string>
     <string name="score">Score: %d</string>
     <string name="high_score">High Score: %d</string>
+    <string name="local_high_score">Local High Score</string>
+    <string name="your_score">Your Score:</string>
     <string name="new_high_score">★ New High Score! ★</string>
     <string name="submit_score">Submit Score</string>
+    <string name="back_to_menu">Back to Menu</string>
+    <string name="restart_full">Restart Game</string>
+    <string name="enter_your_name">Enter your name</string>
     <string name="top_5_players">Top 5 Players</string>
-    <string name="tilt_to_steer">TILT TO STEER</string>
-    <string name="center_tilt">Center Tilt</string>
+    <string name="controls_title">Controls</string>
+    <string name="controls_tilt">Hold your phone flat and tilt to steer &amp; balance</string>
+    <string name="controls_objective">Dodge cannonballs, grab coins (+50 pts), and avoid the red perimeter!</string>
+    <string name="hold_flat_title">Hold Phone Flat</string>
+    <string name="hold_flat_message">Tilt your phone flat (screen facing up) to begin gameplay.</string>
+    <string name="hold_flat_cancel">Cancel</string>
+    <string name="mute_sound">Mute sound</string>
+    <string name="unmute_sound">Unmute sound</string>
+    <string name="pause_game">Pause game</string>
 </resources>
